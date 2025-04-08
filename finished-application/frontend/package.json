@@ -4,7 +4,7 @@
   "description": "Sick Fits! An example React, GraphQL, Next and Apollo",
   "main": "index.js",
   "scripts": {
-    "dev": "next -p 7777",
+    "dev": "unset NODE_OPTIONS && next -p 7777",
     "build": "next build",
     "start": "next start -p 7777",
     "test": "NODE_ENV=test jest --watch",
@@ -46,6 +46,7 @@
     "react-dom": "^17.0.1",
     "react-transition-group": "^4.4.1",
     "styled-components": "^5.2.1",
+    "typescript": "^5.8.3",
     "waait": "^1.0.5"
   },
   "devDependencies": {
