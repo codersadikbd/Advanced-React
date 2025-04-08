@@ -1,4 +1,4 @@
-export default function () {
+export default function sadik() {
   return (
     <div>
       <p>Hello!</p>
