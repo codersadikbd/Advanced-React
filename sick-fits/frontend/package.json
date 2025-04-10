@@ -26,6 +26,8 @@
     "graphql-tag": "^2.11.0",
     "graphql-upload": "^11.0.0",
     "lodash.debounce": "^4.0.8",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.2",
     "next": "^10.0.3",
     "next-with-apollo": "^5.1.1",
     "nprogress": "^0.2.0",

@@ -1,35 +1,24 @@
-import { config } from "@keystone-next/keystone/schema";
-import { createAuth } from "@keystone-next/auth";
-import { statelessSessions } from "@keystone-next/keystone/session";
-import { lists } from "./schema";
+import { config, createSchema } from '@keystone-next/keystone/schema';
+import 'dotenv/config';
 
 const databaseURL =
-  process.env.DATABASE_URL || "mongodb://localhost/sick-fits-keystone";
-
-const sessionConfig = statelessSessions({
-  secret: process.env.COOKIE_SECRET || "a-very-secure-secret",
-});
-
-const { withAuth } = createAuth({
-  listKey: "User",
-  identityField: "email",
-  secretField: "password",
-  initFirstItem: {
-    fields: ["name", "email", "password"],
+  process.env.databaseURL ||
+  'mongodb+srv://sicksadik:Sadik@2000@sickclusersadik.yaxqrtu.mongodb.net/?retryWrites=true&w=majority&appName=SickCluserSadik';
+export default config({
+  server: {
+    cors: {
+      origin: [process.env.FRONTEND_URL],
+      credentials: true,
+    },
+  },
+  db: {
+    adapter: 'mongoose',
+    url: databaseURL,
+  },
+  lists: createSchema({
+    // Schema items go here
+  }),
+  ui: {
+    isAccessAllowed: () => true,
   },
 });
-
-export default withAuth(
-  config({
-    db: {
-      adapter: "mongoose",
-      url: databaseURL,
-    },
-    lists,
-    session: sessionConfig,
-    ui: {
-      isAccessAllowed: ({ session }: { session?: { data?: any } }) =>
-        !!session?.data,
-    },
-  })
-);

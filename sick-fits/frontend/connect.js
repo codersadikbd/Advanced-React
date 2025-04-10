@@ -1,0 +1,2 @@
+// connect.js
+module.exports = {};
